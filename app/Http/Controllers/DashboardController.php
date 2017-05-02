@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\Thread;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -27,8 +28,18 @@ class DashboardController extends Controller
         return Task::all()->count();
     }
 
+    public function threadsNumber()
+    {
+        return Thread::all()->count();
+    }
+
     public function createRandomTask()
     {
         factory(\App\Task::class)->states('user')->create();
+    }
+
+    public function createRandomThread()
+    {
+        factory(\App\Thread::class)->create();
     }
 }
