@@ -27,4 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('dashboard',$data);
     })->name('dashboard');
 
+    Route::get('tasks', 'DashboardController@tasks')->name('tasks');
+    Route::get('dashboard/tasks/number', 'DashboardController@tasksNumber')->name('tasks-number');
+    Route::get('create/random/task', 'DashboardController@createRandomTask')->name('createRandomTask');
 });
