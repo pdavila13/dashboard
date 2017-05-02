@@ -16,7 +16,21 @@ class DashboardController extends Controller
     public function index()
     {
         $data = [];
+        $data['labels1'] =  "['January', 'February', 'March', 'April', 'May', 'June', 'July']";
+        $data['values1'] =  "[10,42,4,23,43,76]";
+        $data['labels2'] =  "['January', 'February', 'March', 'April', 'May', 'June', 'July']";
+        $data['values2'] =  "[10,42,4,23,43,76]";
+
         return view('dashboard',$data);
+    }
+
+    public function graph1()
+    {
+        $data = [];
+        $data['labels3']= ['Pepe', 'Maria', 'Jaume', 'Abril', 'Paolo'];
+        $data['values3']= [45,56,43,23,12];
+
+        return $data;
     }
 
     public function tasks()

@@ -1,9 +1,8 @@
 @extends('adminlte::page')
 
 @section('htmlheader_title')
-	Change Title here!
+    Change Title here!
 @endsection
-
 
 @section('main-content')
     <div class="container-fluid spark-screen">
@@ -12,6 +11,7 @@
             <dashboard-small-box name="tasks"></dashboard-small-box>
             <dashboard-small-box name="threads" color="bg-green"></dashboard-small-box>
 
+            <!-- ./col -->
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-yellow">
@@ -42,6 +42,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -202,10 +203,39 @@
 
                         <dashboard-increase-button name="task"></dashboard-increase-button>
                         <dashboard-increase-button name="thread"></dashboard-increase-button>
+
                     </div>
                     <!-- /.box-body -->
                 </div>
 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <graph
+                        :labels="{{ $labels1 }}"
+                        :values="{{ $values1 }}"
+                        color="red"
+                ></graph>
+            </div>
+            <div class="col-lg-6">
+                <graph
+                        :labels="{{ $labels2 }}"
+                        :values="{{ $values2 }}"
+                ></graph>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <graph url="/dashboard/graphs/1"></graph>
+            </div>
+            <div class="col-lg-9">
+                <graph
+                        :labels="['dsaassd', 'February', 'March', 'April', 'May', 'June', 'July']"
+                        :values="[67,42,445,23,23,76]"
+                ></graph>
             </div>
         </div>
 

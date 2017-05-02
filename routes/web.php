@@ -34,3 +34,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('create/random/thread', 'DashboardController@createRandomThread');
     Route::get('activity-feed', 'DashboardController@fetchActivityFeed');
 });
+
+Route::get('dashboard/graphs/1', 'DashboardController@graph1');
