@@ -12,6 +12,14 @@ window.Vue = require('vue');
 import Vue2Filters from 'vue2-filters'
 window.Vue.use(Vue2Filters)
 
+import VueEcho from 'vue-echo';
+
+Vue.use(VueEcho, {
+  broadcaster: 'pusher',
+  key: '3f6a03ff85543a3fdfbe',
+  cluster: 'eu',
+  encrypted: true
+});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import voca from 'voca';
+import pluralize from 'pluralize'
 export default {
   data: function () {
     return {
@@ -32,8 +34,17 @@ export default {
     this.nameData = this.name
     this.value = this.dashboardValue(this.nameData)
     console.log('Component smallbox mounted.')
+    console.log(this.eventName())
+    this.$echo.channel('dashboard').listen(this.eventName(), (payload) => {
+      console.log('Event received!!!!!!!!!')
+      console.log(payload);
+      this.value++
+    });
   },
   methods: {
+    eventName() {
+      return voca.capitalize(pluralize.singular(this.name))+'Created'
+    },
     dashboardValue (name) {
       var component = this
       axios.get('/dashboard/' + name + '/number')
