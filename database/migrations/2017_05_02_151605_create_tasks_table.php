@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFavoritesTable extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateFavoritesTable extends Migration
      */
     public function up()
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('favorited_id');
-            $table->string('favorited_type', 50);
+            $table->integer('user_id');
+            $table->string('name');
+            $table->string('description');
+            $table->boolean('done');
+            $table->integer('priority');
             $table->timestamps();
-
-            $table->unique(['user_id', 'favorited_id', 'favorited_type']);
         });
     }
 
@@ -31,6 +31,6 @@ class CreateFavoritesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('tasks');
     }
 }
