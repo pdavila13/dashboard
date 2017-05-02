@@ -214,17 +214,19 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <graph
-                        :labels="{{ $labels1 }}"
-                        :values="{{ $values1 }}"
-                        color="red"
-                ></graph>
+                <graph></graph>
+                {{--<graph--}}
+                        {{--:labels="{{ $labels1 }}"--}}
+                        {{--:values="{{ $values1 }}"--}}
+                        {{--color="red"--}}
+                {{--></graph>--}}
             </div>
             <div class="col-lg-6">
-                <graph
-                        :labels="{{ $labels2 }}"
-                        :values="{{ $values2 }}"
-                ></graph>
+                <graph></graph>
+                {{--<graph--}}
+                        {{--:labels="{{ $labels2 }}"--}}
+                        {{--:values="{{ $values2 }}"--}}
+                {{--></graph>--}}
             </div>
         </div>
 
