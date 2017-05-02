@@ -9,3 +9,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
+_ide_hepler.php
+composer.lock
+yarn.lock
