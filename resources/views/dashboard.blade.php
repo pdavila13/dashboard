@@ -214,25 +214,24 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <graph></graph>
-                {{--<graph--}}
-                        {{--:labels="{{ $labels1 }}"--}}
-                        {{--:values="{{ $values1 }}"--}}
-                        {{--color="red"--}}
-                {{--></graph>--}}
+                <graph
+                        :labels="{{ $labels1 }}"
+                        :values="{{ $values1 }}"
+                        color="red"
+                ></graph>
             </div>
             <div class="col-lg-6">
-                <graph></graph>
-                {{--<graph--}}
-                        {{--:labels="{{ $labels2 }}"--}}
-                        {{--:values="{{ $values2 }}"--}}
-                {{--></graph>--}}
+                <graph
+                        :labels="{{ $labels2 }}"
+                        :values="{{ $values2 }}"
+                        color="green"
+                ></graph>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-3">
-                <graph url="/dashboard/graphs/1"></graph>
+                <graph url="/dashboard/graphs/1" color="yellow"></graph>
             </div>
             <div class="col-lg-9">
                 <graph

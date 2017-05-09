@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class TaskCreated
+class TaskCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -31,6 +31,6 @@ class TaskCreated
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('dashboard');
+        return new Channel('dashboard');
     }
 }

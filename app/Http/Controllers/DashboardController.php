@@ -17,6 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         $data = [];
+
         $data['labels1'] =  "['January', 'February', 'March', 'April', 'May', 'June', 'July']";
         $data['values1'] =  "[10,42,4,23,43,76]";
         $data['labels2'] =  "['January', 'February', 'March', 'April', 'May', 'June', 'July']";
@@ -41,14 +42,15 @@ class DashboardController extends Controller
 
     public function tasksNumber()
     {
-        // CACHE MISS --> No ho troba
-        // CACHE HIT --> s'ha trobat valor a la cache
-        $value = Cache::remember('tasksNumber', 5, function () {
-           // Codi a executar si CACHE MISS
+        // CACHE MISS --> No ho trobo a la cache
+        // CACHE HIT --> S'ha trobat valor a la cache
+        $value = Cache::remember('tasksNumber',5, function () {
+            // Codi a executar si CACHE MISS
             return Task::all()->count();
         });
 
         return $value;
+
     }
 
     public function threadsNumber()
@@ -68,6 +70,6 @@ class DashboardController extends Controller
 
     public function fetchActivityFeed()
     {
-        return Activity::all();
+        return Activity::orderByDesc('updated_at')->get();
     }
 }

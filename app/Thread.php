@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Filters\ThreadFilters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 

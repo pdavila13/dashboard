@@ -1,9 +1,9 @@
 <template>
     <ul class="timeline">
         <li class="time-label">
-                  <span class="bg-red">
-                    10 Feb. 2014
-                  </span>
+            <span class="bg-red">
+                10 Feb. 2014
+            </span>
         </li>
 
         <li v-for="(activity, index) in activities">
@@ -12,11 +12,12 @@
             <div class="timeline-item">
                 <span class="time"><i class="fa fa-clock-o"></i> {{ activity.updated_at }}</span>
 
-                <h3 class="timeline-header">TODO TITLE</h3>
+                <h3 class="timeline-header">{{ getTitle(activity.type) }}</h3>
 
                 <div class="timeline-body">
                     TODO DESCRIPTION {{ activity.type }}
                 </div>
+
                 <div class="timeline-footer">
                     <a class="btn btn-primary btn-xs">Read more</a>
                     <a class="btn btn-danger btn-xs">Delete</a>
@@ -39,6 +40,16 @@ export default {
     this.fetchActivityFeed()
   },
   methods: {
+    getTitle: function (type) {
+      switch (type) {
+        case 'created_task':
+          return 'Created task';
+        case 'created_thread':
+          return 'Created thread'
+        default:
+          return 'TODO title'
+      }
+    },
     fetchActivityFeed () {
       console.log('fetchActivityFeedg executed!')
       var component = this

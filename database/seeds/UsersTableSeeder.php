@@ -13,6 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         factory(App\User::class, 25)->create()->each(function ($u) {
             $u->threads()->save(factory(App\Thread::class)->make());
+
             $u->tasks()->save(factory(App\Task::class)->make());
             $u->tasks()->save(factory(App\Task::class)->make());
         });
@@ -20,6 +21,7 @@ class UsersTableSeeder extends Seeder
         factory(App\User::class, 25)->create()->each(function ($u) {
             $u->threads()->save(factory(App\Thread::class)->make());
             $u->threads()->save(factory(App\Thread::class)->make());
+
             $u->tasks()->save(factory(App\Task::class)->make());
         });
 
@@ -27,6 +29,7 @@ class UsersTableSeeder extends Seeder
             $u->threads()->save(factory(App\Thread::class)->make());
             $u->threads()->save(factory(App\Thread::class)->make());
             $u->threads()->save(factory(App\Thread::class)->make());
+
             $u->tasks()->save(factory(App\Task::class)->make());
             $u->tasks()->save(factory(App\Task::class)->make());
             $u->tasks()->save(factory(App\Task::class)->make());
@@ -38,9 +41,11 @@ class UsersTableSeeder extends Seeder
             $u->threads()->save(factory(App\Thread::class)->make());
             $u->threads()->save(factory(App\Thread::class)->make());
             $u->threads()->save(factory(App\Thread::class)->make());
+
             $u->tasks()->save(factory(App\Task::class)->make());
             $u->tasks()->save(factory(App\Task::class)->make());
             $u->tasks()->save(factory(App\Task::class)->make());
+
         });
     }
 }

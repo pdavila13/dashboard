@@ -24,7 +24,7 @@ trait RecordsActivity
      */
     protected static function getActivitiesToRecord()
     {
-        return ['created'];
+        return ['created','updated','deleted'];
     }
 
     /**
@@ -36,7 +36,8 @@ trait RecordsActivity
     {
         $this->activity()->create([
             'user_id' => auth()->id(),
-            'type' => $this->getActivityType($event)
+            'type' => $this->getActivityType($event),
+            //'title' => $this->getTitle($event)
         ]);
     }
 

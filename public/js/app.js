@@ -40398,54 +40398,76 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      legend: ''
+      legend: '',
+      dataValues: [],
+      dataLabels: []
     };
   },
+
+  methods: {
+    render: function render() {
+      console.log('**************** RENDER ');
+      var data = {
+        labels: this.dataLabels,
+        datasets: [{
+          label: "My First dataset",
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: this.color,
+          borderColor: "rgba(75,192,192,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(75,192,192,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: this.dataValues,
+          spanGaps: false
+        }]
+      };
+      console.log(this.$children);
+      var context = this.$refs.canvas.getContext('2d');
+      var chart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(context, {
+        type: 'bar',
+        data: data
+      });
+      this.legend = chart.generateLegend();
+    }
+  },
   mounted: function mounted() {
+    var component = this;
     //Fetch API -> Standard Javascript
-    fetch(this.url, {
-      method: 'get'
-    }).then(function (response) {
-      console.log(response.data);
-      this.values = response.data.values3;
-      this.labels = response.data.labels3;
-    }).catch(function (err) {
-      // Error :(
-      //TODO
-    });
-    console.log('Component mounted.');
-    var data = {
-      labels: this.labels,
-      datasets: [{
-        label: "My First dataset",
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: this.color,
-        borderColor: "rgba(75,192,192,1)",
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: "rgba(75,192,192,1)",
-        pointBackgroundColor: "#fff",
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: "rgba(75,192,192,1)",
-        pointHoverBorderColor: "rgba(220,220,220,1)",
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: this.values,
-        spanGaps: false
-      }]
-    };
-    console.log(this.$children);
-    var context = this.$refs.canvas.getContext('2d');
-    var chart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(context, {
-      type: 'bar',
-      data: data
-    });
-    this.legend = chart.generateLegend();
+    console.log('########## URL: ' + this.url);
+    if (this.url) {
+      fetch(this.url, {
+        method: 'get'
+      }).then(function (response) {
+        console.log('########## PROVA: ');
+        return response.json().then(function (json) {
+          // process your JSON further
+          console.log(json);
+          console.log(json.values3);
+          console.log(json.labels3);
+          component.dataValues = json.values3;
+          component.dataLabels = json.labels3;
+          component.render();
+        });
+      }).catch(function (err) {
+        // Error :(
+        console.log('########## ERROR!!!!!!!!!!!!!!');
+      });
+    } else {
+      component.dataValues = this.values;
+      component.dataLabels = this.labels;
+      component.render();
+    }
   }
 });
 
@@ -40886,6 +40908,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -40899,6 +40922,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    getTitle: function getTitle(type) {
+      switch (type) {
+        case 'created_task':
+          return 'Created task';
+        case 'created_thread':
+          return 'Created thread';
+        default:
+          return 'TODO title';
+      }
+    },
     fetchActivityFeed: function fetchActivityFeed() {
       console.log('fetchActivityFeedg executed!');
       var component = this;
@@ -82118,7 +82151,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "fa fa-clock-o"
     }), _vm._v(" " + _vm._s(activity.updated_at))]), _vm._v(" "), _c('h3', {
       staticClass: "timeline-header"
-    }, [_vm._v("TODO TITLE")]), _vm._v(" "), _c('div', {
+    }, [_vm._v(_vm._s(_vm.getTitle(activity.type)))]), _vm._v(" "), _c('div', {
       staticClass: "timeline-body"
     }, [_vm._v("\n                TODO DESCRIPTION " + _vm._s(activity.type) + "\n            ")]), _vm._v(" "), _vm._m(1, true)])])
   })], 2)
@@ -82127,7 +82160,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "time-label"
   }, [_c('span', {
     staticClass: "bg-red"
-  }, [_vm._v("\n                10 Feb. 2014\n              ")])])
+  }, [_vm._v("\n            10 Feb. 2014\n        ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "timeline-footer"
