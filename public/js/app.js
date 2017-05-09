@@ -82160,7 +82160,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "time-label"
   }, [_c('span', {
     staticClass: "bg-red"
-  }, [_vm._v("\n            10 Feb. 2014\n        ")])])
+  }, [_vm._v("\n            10 Apr. 2017\n        ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "timeline-footer"
